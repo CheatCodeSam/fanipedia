@@ -1,0 +1,20 @@
+{% extends "__base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+    <div>
+        <h1>Register</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in register_form.visible_fields %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field|add_class:' input input-bordered w-full max-w-xs ' }}
+                </div>
+            {% endfor %}
+            <button class="btn btn-primary" type="submit">Register</button>
+        </form>
+        <p>
+            If you already have an account, <a href="/login">login</a> instead.
+        </p>
+    </div>
+{% endblock %}
